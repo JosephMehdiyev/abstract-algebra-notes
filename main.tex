@@ -1,17 +1,17 @@
 % !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
-\documentclass[oneside]{book}
+\documentclass[11pt]{scrreprt}
 
 \usepackage{config}
 \begin{document}
-\pagestyle{fancy}
-\renewcommand{\chaptermark}[1]{\markboth{#1}{#1}}
-\fancyhead[R]{\thepage}
-\fancyhead[L]{\chaptername\ \thechapter\ --\ \leftmark}
+\renewcommand{\figurename}{Image}
+\numberwithin{figure}{chapter}
 
-\include{others/titlepage.tex}
-\include{others/preface}
+\title{Abstract Algebra Notes}
+\author{Joseph Mehdiyev}
+\date{February 2025}
+\maketitle
+
 \tableofcontents
+\part{Group Theory}
 \include{chapters/group}
-%Numbering the Pages?tet
-\cfoot{\thepage\ of \pageref{LastPage}}
 \end{document}

@@ -1,138 +1,160 @@
 
 % !TeX TXS-program:compile = txs:///pdflatex/[--shell-escape]
 \ProvidesPackage{config}
-% This sty file stores the latex configuration (packages, margins,
-% other stuff) and my personal command list and configurations.
+% This configuration file is mainly based on Evan Chen's own latex package.
 
 %packages
 \usepackage[english]{babel}
-\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
 \usepackage{amsmath, amsthm, geometry}
 \usepackage{mathtools}
-\usepackage{enumitem}
-\usepackage{graphicx}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
-\usepackage{makeidx}
 \usepackage{amsthm}
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage[lastexercise]{exercise}
 \usepackage{amssymb}
-\usepackage{tikz}
-\usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
-\usepackage{pgf}
-\usepackage{mathrsfs}
-\usepackage{blindtext}
-% A package for constructing tables
-\usepackage{multirow}
-% A library to show code, with syntax color
-\usepackage{color}
-\definecolor{bg}{HTML}{282828}
-% A package to share the source code easier
-\usepackage{embedfile}
-\usepackage{hypgotoe}
-\newcommand*{\embed}[2]{\embedfile{#1}\href{gotoe:embedded=#1}{#2}}
-% Bookmark numbering and stuff
+\PassOptionsToPackage{svgnames,dvipsnames,table}{xcolor}
+\usepackage{xcolor}
 \usepackage{hyperref}
-\hypersetup{
-    bookmarksnumbered,
-    breaklinks=false,
-    linktocpage=false,
-    colorlinks=true,
-    linkcolor=blue,
-    citecolor=black,
-    urlcolor=blue,
-menucolor=black}
-
-%-------------
-
 \usepackage{lastpage}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
-
-%dummy text generator, use \lipsum[NUMBER-NUMBER] where NUMBERS are
-% natural numbers between 1 and 150.
 \usepackage{lipsum}
 
-%fancy theorems, examples, definitions with boxes
-\usepackage{mdframed}
-
-% Makes line breaking possible for url links
-\usepackage{url}
-\def\UrlBreaks{\do\/\do-}
-
-%-------------------------------------------------
-%Personal Commands
-
-%makes a blank page
-\newcommand\blankpage{
-    \clearpage
-    \begingroup
-    \null
-    \thispagestyle{empty}%
-    \addtocounter{page}{-1}%
-    \hypersetup{pageanchor=false}%
-    \clearpage
-    \endgroup
+%%% Colored sections
+\renewcommand*{\sectionformat}%
+{\color{purple}\S\thesection\enskip}
+\renewcommand*{\subsectionformat}%
+{\color{purple}\S\thesubsection\enskip}
+\renewcommand*{\subsubsectionformat}%
+{\color{purple}\S\thesubsubsection\enskip}
+\KOMAoptions{numbers=noenddot}
+%% \maketitle configuration
+\addtokomafont{subtitle}{\Large}
+\setkomafont{author}{\Large\scshape}
+\setkomafont{date}{\Large\normalsize}
+%%% Page setup
+\usepackage[headsepline]{scrlayer-scrpage}
+\renewcommand{\headfont}{}
+\addtolength{\textheight}{3.14cm}
+\setlength{\footskip}{0.5in}
+\setlength{\headsep}{10pt}
+\ihead{\footnotesize\textbf{\@author} (\@date)}
+\automark{section}
+\chead{}
+\ohead{\footnotesize\textbf{\@title}}
+\cfoot{\pagemark}
+\providecommand{\hrulebar}{\par
+    \hspace{\fill}\rule{0.95\linewidth}{.7pt}\hspace{\fill}
+\par\nointerlineskip \vspace{\baselineskip}}
+%%% Optional colored theorems
+\usepackage{thmtools}
+\usepackage[framemethod=TikZ]{mdframed}
+\mdfdefinestyle{mdbluebox}{%
+    roundcorner=10pt,
+    linewidth=1pt,
+    skipabove=12pt,
+    innerbottommargin=9pt,
+    skipbelow=2pt,
+    linecolor=blue,
+    nobreak=true,
+    backgroundcolor=TealBlue!5,
 }
+\declaretheoremstyle[
+    headfont=\color{blue!40!black}\normalfont\bfseries,
+    spaceabove=8pt,
+    spacebelow=8pt,
+    bodyfont=\normalfont
+]{basehead}
 
-\newcommand{\jump}{\vspace*{0.5cm}}
-%-------------------------------------
-%Theorem, Definition, Lemma stuff with boxes
+\declaretheoremstyle[
+    headfont=\sffamily\bfseries\color{MidnightBlue},
+    mdframed={style=mdbluebox},
+    headpunct={\\[3pt]},
+    postheadspace={0pt}
+]{thmbluebox}
 
-\theoremstyle{definition}
-\newmdtheoremenv{theorem}{Theorem}[section]
-\newmdtheoremenv{proposition}{Proposition}[section]
-\newmdtheoremenv{example}{Example}[section]
-\newmdtheoremenv{definition}{Definition}[section]
-\newmdtheoremenv{corollary}{Corollary}[section]
-\newmdtheoremenv{lemma}{Lemma}[section]
-\newmdtheoremenv{diagram}{Diagram}[section]
-% Epsilon neighborhood shortcut
-\newcommand{\Vn}[1]{V_{\epsilon}(#1)}
-\newcommand{\Vnn}[1]{V_{\epsilon/2}(#1)}
+\mdfdefinestyle{mdredbox}{%
+    linewidth=0.5pt,
+    skipabove=12pt,
+    frametitleaboveskip=5pt,
+    frametitlebelowskip=0pt,
+    skipbelow=2pt,
+    frametitlefont=\bfseries,
+    innertopmargin=4pt,
+    innerbottommargin=8pt,
+    nobreak=true,
+    backgroundcolor=Salmon!5,
+    linecolor=RawSienna,
+}
+\declaretheoremstyle[
+    headfont=\bfseries\color{RawSienna},
+    mdframed={style=mdredbox},
+    headpunct={\\[3pt]},
+    postheadspace={0pt},
+]{thmredbox}
+\mdfdefinestyle{mdgreenbox}{%
+    skipabove=8pt,
+    linewidth=2pt,
+    rightline=false,
+    leftline=true,
+    topline=false,
+    bottomline=false,
+    linecolor=ForestGreen,
+    backgroundcolor=ForestGreen!5,
+}
+\declaretheoremstyle[
+    headfont=\bfseries\sffamily\color{ForestGreen!70!black},
+    bodyfont=\normalfont,
+    spaceabove=2pt,
+    spacebelow=1pt,
+    mdframed={style=mdgreenbox},
+    headpunct={ --- },
+]{thmgreenbox}
+\mdfdefinestyle{mdblackbox}{%
+    skipabove=8pt,
+    linewidth=3pt,
+    rightline=false,
+    leftline=true,
+    topline=false,
+    bottomline=false,
+    linecolor=black,
+    backgroundcolor=RedViolet!5!gray!5,
+}
+\declaretheoremstyle[
+    headfont=\bfseries,
+    bodyfont=\normalfont\small,
+    spaceabove=0pt,
+    spacebelow=0pt,
+    mdframed={style=mdblackbox}
+]{thmblackbox}
 
-%--------------
-% This makes annoying underfull and overfull errors disappear
-\hbadness=99999
-\hfuzz=9999pt
+\declaretheorem[style=thmbluebox,name=Theorem,numberwithin=section]{theorem}
+\declaretheorem[style=thmbluebox,name=Lemma,sibling=theorem]{lemma}
+\declaretheorem[style=thmbluebox,name=Proposition,sibling=theorem]{proposition}
+\declaretheorem[style=thmbluebox,name=Corollary,sibling=theorem]{corollary}
+\declaretheorem[style=thmbluebox,name=Theorem,numbered=no]{theorem*}
+\declaretheorem[style=thmbluebox,name=Lemma,numbered=no]{lemma*}
+\declaretheorem[style=thmbluebox,name=Proposition,numbered=no]{proposition*}
+\declaretheorem[style=thmbluebox,name=Corollary,numbered=no]{corollary*}
+\declaretheorem[style=thmgreenbox,name=Algorithm,sibling=theorem]{algorithm}
+\declaretheorem[style=thmgreenbox,name=Algorithm,numbered=no]{algorithm*}
+\declaretheorem[style=thmgreenbox,name=Claim,sibling=theorem]{claim}
+\declaretheorem[style=thmgreenbox,name=Claim,numbered=no]{claim*}
+\declaretheorem[style=thmredbox,name=Example,sibling=theorem]{example}
+\declaretheorem[style=thmredbox,name=Example,numbered=no]{example*}
+\declaretheorem[style=thmblackbox,name=Remark,sibling=theorem]{remark}
+\declaretheorem[style=thmblackbox,name=Remark,numbered=no]{remark*}
 
-%--------------------------------------
-\def\E{{\mathbb{E}}}
-\def\NN{{\mathbb{N}}}
-\def\RR{{\mathbb{R}}}
-\def\QQ{{\mathbb{Q}}}
-\def\V{{\mathbb{V}}}
-\def\t{{\widehat{\theta}}}
-\def\se{{\op{se}}}
-
-\newcommand{\limx}[2]{\underset{#1 \to #2}{\lim}}
-% for exercises chapters
-\newcounter{question}
-\setcounter{question}{0}
-
-\newcommand\Que[1]{%
-    \leavevmode\par
-    \stepcounter{question}
-    \noindent
-\thequestion. Q --- #1\par}
-
-\usepackage{tcolorbox}
-\tcbuselibrary{theorems}
-
-\newtcbtheorem[number within=section]{theo}{Theorem}%
-{colback=red!2!white,colframe=red!80!black,boxrule=0.7pt,arc=0mm,fonttitle=\bfseries}{th}
-\newtcbtheorem[number within=section]{defi}{Definition}%
-{colback=blue!2!white,colframe=blue!80!black,boxrule=0.7pt,arc=0mm,fonttitle=\bfseries}{th}
-\newtcbtheorem[number within=section]{lemm}{Lemma}%
-{colback=green!2!white,colframe=green!80!black,boxrule=0.7pt,arc=0mm,fonttitle=\bfseries}{th}
-\newtcbtheorem[number within=section]{prop}{Proposition}%
-{colback=black!2!white,colframe=black!80!black,boxrule=0.7pt,arc=0mm,fonttitle=\bfseries}{th}
-
-\usepackage{enumitem}
-\AtBeginEnvironment{enumerate}{\everymath{\displaystyle}}
-\newlist{problems}{enumerate}{2}
-\setlist[problems]{wide=0pt}
-\setlist[problems, 1]{label =\thechapter.\arabic*, font=\bfseries, wide=0pt}
-\setlist[problems,2]{label =(\alph*), wide =0.5em, topsep=2pt, itemsep =2pt}
+\declaretheorem[style=basehead,name=Answer,sibling=theorem]{answer}
+\declaretheorem[style=basehead,name=Answer,numbered=no]{answer*}
+\declaretheorem[style=basehead,name=Conjecture,sibling=theorem]{conjecture}
+\declaretheorem[style=basehead,name=Conjecture,numbered=no]{conjecture*}
+\declaretheorem[style=basehead,name=Definition,sibling=theorem]{definition}
+\declaretheorem[style=basehead,name=Definition,numbered=no]{definition*}
+\declaretheorem[style=basehead,name=Exercise,sibling=theorem]{exercise}
+\declaretheorem[style=basehead,name=Exercise,numbered=no]{exercise*}
+\declaretheorem[style=basehead,name=Fact,sibling=theorem]{fact}
+\declaretheorem[style=basehead,name=Fact,numbered=no]{fact*}
+\declaretheorem[style=basehead,name=Problem,sibling=theorem]{problem}
+\declaretheorem[style=basehead,name=Problem,numbered=no]{problem*}
+\declaretheorem[style=basehead,name=Question,sibling=theorem]{ques}
+\declaretheorem[style=basehead,name=Question,numbered=no]{ques*}

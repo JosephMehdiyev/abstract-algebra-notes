@@ -1,2 +1,5 @@
 \babel@toc {english}{}\relax 
-\contentsline {chapter}{\numberline {1}Groups}{3}{chapter.1}%
+\contentsline {part}{\numberline {I}Group Theory}{3}{part.1}%
+\contentsline {chapter}{\numberline {1}Groups}{4}{chapter.1}%
+\contentsline {section}{\numberline {1.1}Introduction to Groups}{4}{section.1.1}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
