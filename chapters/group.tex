@@ -1,2 +1,91 @@
 \chapter{Groups}
+When I started studying this subject, I though Abstract Algebra was a field about theoretical mathematics, which of course I was wrong.
+
+Abstract Algebra, especially Groups, study the natural structure of life (or mathematical objects) in general (or in abstract) view.
+Symmetries, Permutations, Rotations are part of the study of the Group Theory and many scientists (and mathematicians obviously) such as
+modern Physicists and Chemists heavily use this subject.
+\footnote{This is what I understood from stuff I have read in the internet}
 \section{Introduction to Groups}
+Group Theory is fairly new subject and through the history had subject to evolutionary process. Naturally it had many different definitions
+and properties depending on these definitions. The modern definition is as follows,
+
+\begin{definition*}
+    Let $G$ be a set. A \alert{Binary Operation} on $G$ is a function that inputs a pair of elements in $G$ to another element of $G$.
+\end{definition*}
+\begin{example*}
+    Addition and Multiplication are Binary Operations in $\ZZ$.
+\end{example*}
+\begin{definition*}
+    A \alert{Group} $(G,\ast)$ is a set with a binary operation on $G$ that satisfies
+    \begin{enumerate}
+        \item Closure: $\forall x,y \in G$, $x \ast y \in G$.
+        \item Associativity
+        \item Identity (neutral): $\exists e \in G$ such that $x \ast e = x$ $\forall x \in G$.
+        \item Inverse: $\forall x \in G$, $\exists x \inv \in G$ such that $x \ast x \inv = e$.
+    \end{enumerate}
+\end{definition*}
+\begin{example*}
+    There are several Groups we are already familiar with: $(\ZZ, +),(\QQ, +),(\RR, +)$ are all groups under addition. The identity element
+    is $0$ and the inverses are simply $-a$ $ \forall a \in G$.
+\end{example*}
+\begin{example*}
+    $(\QQ^+,*)$ is a Group with identity $1$. Clearly the inverse of $\frac{m}{n} \in G$ is $\frac{n}{m}$.
+\end{example*}
+\begin{example*}
+    Addition of finite integers modulo $n$ or $(\ZZ_n, + \mod n)$ is a group. We denote this as $\ZZ_n$. For the specific case $n= 5$, we have
+    \[ \{ 0,1,2,3,4\} \in \ZZ_n\]
+    Identity element is $0$. We also call specific groups like these $\alert{Cyclic Groups}$. We will learn about them later.
+\end{example*}
+\begin{example*}
+    A set of rotations and reflections of $n$-gon where $n \ge 3$ is a group with composition as operation. We call this $\alert{Dihedral
+    Group}$ and denote this group as $D_n$.
+    For $n =3$, $D_n$ consists of rotating $0^\circ, 120^ \circ ,240 ^\circ$ and reflecting about three bisects. There are total $6$
+    elements of $D_3$.
+\end{example*}
+\section{Elementary Properties of Groups}
+Now we will list very elementary properties and theorems of the groups with proofs (of course).
+\begin{theorem}
+    In the group $G$, identity is unique.
+\end{theorem}
+\begin{proof}
+    Suppose otherwise. If both $e_1,e_2$ are distinct identity elements, then
+    \[ e_1 = e_1 \ast e_2 = e_2\]
+    Which is a clear contradiction.
+\end{proof}
+Group theory heavily studies the groups under binary operations $+$ and $\cdot $. In order to make notation more clear and easier, we use
+(for multiplication)
+\[ a \cdot b = ab, e = 1, a^n= aaa\ldots a\]
+and for addition,
+\[ a+b,e = 0, -a = a\inv, na= a + a + \ldots + a\]
+Usually groups with addition operations are $\alert{commutative}$. Primary reason is mathematicians do not like seeing $a+b \neq b + a$. We
+also have a specific name for such groups
+\begin{definition*}
+    A Group is $\alert{abelian}$ if it is commutative.
+\end{definition*}
+\begin{theorem}(Cancellation Law)
+    in a group $G$, cancellation holds,
+    \[ ba = ca \Rightarrow b = c \ \land  \ ab = ac \Rightarrow b = c\]
+\end{theorem}
+\begin{proof}
+    Multiply by $a\inv$ from right and left respectively.
+\end{proof}
+\begin{theorem}
+    In the group $G$, inverses are unique.
+\end{theorem}
+\begin{proof}
+    Suppose otherwise. If both $b$ and $c$ are inverses of $a$, then
+    \[ a \ast b  = a \ast c = e\]
+    Cancelling $a$ gives $b \inv = c \inv$
+\end{proof}
+\begin{theorem}
+    For all $a,b$ elements of a group,
+    \footnote{Notice how this theorem looks very familiar for Linear Algebra's inverse theorem. No surprise here, invertible matrices under
+    multiplication is a group.}
+    \[ (ab)\inv = b \inv a \inv\]
+
+\end{theorem}
+
+\begin{proof}
+    We have
+    \[ (ab) \inv \ast ab = e = b\inv a \inv ab  = (b \inv a \inv) (ab)\]
+\end{proof}
