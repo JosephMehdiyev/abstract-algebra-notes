@@ -1,20 +1,20 @@
-\chapter{Groups}
+\chapter{Introduction to Groups}
 When I started studying this subject, I though Abstract Algebra was a field about theoretical mathematics, which of course I was wrong.
 
 Abstract Algebra, especially Groups, study the natural structure of life (or mathematical objects) in general (or in abstract) view.
 Symmetries, Permutations, Rotations are part of the study of the Group Theory and many scientists (and mathematicians obviously) such as
 modern Physicists and Chemists heavily use this subject.
 \footnote{This is what I understood from stuff I have read in the internet}
-\section{Introduction to Groups}
+\section{Definition of Groups}
 Group Theory is fairly new subject and through the history had subject to evolutionary process. Naturally it had many different definitions
 and properties depending on these definitions. The modern definition is as follows,
 
 \begin{definition*}
     Let $G$ be a set. A \alert{Binary Operation} on $G$ is a function that inputs a pair of elements in $G$ to another element of $G$.
 \end{definition*}
-\begin{example*}
+\begin{example}
     Addition and Multiplication are Binary Operations in $\ZZ$.
-\end{example*}
+\end{example}
 \begin{definition*}
     A \alert{Group} $(G,\ast)$ is a set with a binary operation on $G$ that satisfies
     \begin{enumerate}
@@ -24,26 +24,55 @@ and properties depending on these definitions. The modern definition is as follo
         \item Inverse: $\forall x \in G$, $\exists x \inv \in G$ such that $x \ast x \inv = e$.
     \end{enumerate}
 \end{definition*}
-\begin{example*}
+\begin{example}
     There are several Groups we are already familiar with: $(\ZZ, +),(\QQ, +),(\RR, +)$ are all groups under addition. The identity element
     is $0$ and the inverses are simply $-a$ $ \forall a \in G$.
-\end{example*}
-\begin{example*}
+\end{example}
+\begin{example}
     $(\QQ^+,*)$ is a Group with identity $1$. Clearly the inverse of $\frac{m}{n} \in G$ is $\frac{n}{m}$.
-\end{example*}
-\begin{example*}
+\end{example}
+\begin{example}
     Addition of finite integers modulo $n$ or $(\ZZ_n, + \mod n)$ is a group. We denote this as $\ZZ_n$. For the specific case $n= 5$, we have
     \[ \{ 0,1,2,3,4\} \in \ZZ_n\]
     Identity element is $0$. We also call specific groups like these $\alert{Cyclic Groups}$. We will learn about them later.
-\end{example*}
-\begin{example*}
+\end{example}
+\begin{example}
     A set of rotations and reflections of $n$-gon where $n \ge 3$ is a group with composition as operation. We call this $\alert{Dihedral
     Group}$ and denote this group as $D_n$.
     For $n =3$, $D_n$ consists of rotating $0^\circ, 120^ \circ ,240 ^\circ$ and reflecting about three bisects. There are total $6$
     elements of $D_3$.
-\end{example*}
+\end{example}
+\begin{example}
+    The $n \times n$ \alert{general linear group} is the group of all invertible $n \times n$ matrices under multiplication of matrices. Notation is,
+    \[ GL_n= \{ n \times n \ \text{invertible matrices} \ A\}\]
+    This is true since identity matrix $I$ is invertible and multiplication of matrices outputs another invertible matrix.
+
+    We also donate $GL_n(\RR)$ to show if whether we are working on Reals or Complex matrices.
+\end{example}
+\begin{example} Set of \alert{permutations} of a set $T$ under operation composition is a group. Remember that permutations are bijective
+    functions such that
+    \[ f: T \to T\]
+    Composition of functions are associative (this is a very well known fact).
+\end{example}
+Another specific case of permutations, which show itself in the nature and mathematics very often:
+\begin{example}
+    The set of permutations of  indices $\{ 1,2, \ldots, n\}$ with operation composition is a group. In short,
+    \[ S_n \ \text{is the group of permutations of} \ \{1,2, \ldots , n\}\]
+    Then, the number of elements of the group, \alert{the order} of $S_n$, denoted as $|S_n|$  is equal to $n!$.
+    It turns out that $S_n$ have many nice properties. We will study them further in next sections (for organization of notes).
+\end{example}
+\begin{remark*}
+    General Linear Groups and Symmetric Groups are very important in Group Theory. This is mainly because these groups are often
+    \alert{subgroups} of other groups.
+\end{remark*}
 \section{Elementary Properties of Groups}
 Now we will list very elementary properties and theorems of the groups with proofs (of course).
+\begin{definition}
+    The number of elements of a group $G$ is called \alert{order} of $G$ and is notated as $|G|$. If the set is infinite, then $|G| = \infty$.
+
+    The order of an element $g \in G$ is also has means as the smallest positive integer $n$ such that $g^n = e$. If no such $n$ exists,
+    then $|g| = \infty$.
+\end{definition}
 \begin{theorem}
     In the group $G$, identity is unique.
 \end{theorem}
@@ -89,3 +118,57 @@ also have a specific name for such groups
     We have
     \[ (ab) \inv \ast ab = e = b\inv a \inv ab  = (b \inv a \inv) (ab)\]
 \end{proof}
+\section{Subgroups, Additive Groups of Integers}
+\begin{definition*}
+    If a set $H$ is subset of a group $G$ and is also a group, then we call H as \alert{subgroup} of $G$, notated as $ H \le G$. If it is a
+    proper subgroup (that is, if it is not a set consisting of only identity nor equal to $G$) we write $H < G$.
+\end{definition*}
+To check whether if $H$ is subset of $G$, we have to check $3$ properties excluding the associativity. This makes sense, since
+associativity is more of a property of the structure of operations we are working with.
+\begin{example*}
+    The set of all multiples of $a \in \ZZ$ under addition,
+    \[\ZZ a = \{ n \in \ZZ \ | \ n = ka, \ k \in \ZZ\} \]
+    is a subgroup of $\ZZ^+$ under addition, or $\ZZ a \le \ZZ^+$
+    \footnote{here $\ZZ^+$ means set of integers under operation addition, not positive integers}
+\end{example*}
+\begin{proof} clearly $0 \in  \ZZ a$. The inverse of $a \in \ZZ a$ would be simply $-a \in \ZZ a$. Lastly, it is closed since $ka + ta =
+    a(k+t) \in \ZZ a$.
+\end{proof}
+
+\begin{theorem} Let $H$ be a subgroup of $\ZZ^+$. Then $H = \{ 0\}$ or $H = \ZZ a$ where $a$ is the smallest positive integer in $H$.
+\end{theorem}
+\begin{proof}
+    The case when $H= \{ 0\}$. Is trivial. Assume non-zero element $a \in H$. Then $-a \in H$ or in other terms a smallest positive integer
+    $a$ must exist. Then, since $H$ is a subgroup, $2a \in H, 3a \in H, \ldots, ka \in H$. Or in other terms
+    \[ \ZZ a \le H\]
+    Now, we will show that $ H \le \ZZ a$. If $n \in H$, it is clear that either $n \in \ZZ a$ or $n = qa + r$ for $0 < r \le a-1$.
+    However, then $n - qa = r \in H$. Since $a$ is the smallest integer, the condition
+    \[ 0 < r < a-1  \land r \in H \land r \ge a\]
+    is impossible, hence contradiction, which means $r=0$ is the only possible case, hence the result.
+\end{proof}
+This theorem has interesting consequences, one of them being this theorem:
+
+\begin{theorem}
+    The set of the combinations of all integer combinations of $ra + sb$ of $a$ and $b$ is a subgroup of $Z^+$ under addition. In fact, if $d
+    = \gcd(a,b)$,
+    this group is $\ZZ d$. In short,
+    \[ \ZZ d = \ZZ a + \ZZ b =\{ n \in Z \ | \ ra + sb \ \text{for some integers r, s}\}\]
+    We say $\ZZ d$ is \alert{generated} by $a$ and $b$, since it is the smallest group containing both $a$ and $b$.
+\end{theorem}
+\begin{corollary}
+    A pair of integers $a$ and $b$ are relatively prime iff $\exists r,s$ such that
+    \[ sa + rb = 1\]
+    In other words, iff $\ZZ a + \ZZ b = \ZZ$ then $a,b$ are relatively prime.
+\end{corollary}
+Another useful subgroup is $\ZZ m = \ZZ a \cap \ZZ b \le \ZZ$. The variable $m$ is in fact equal to $\lcm (a,b)$.
+\begin{theorem}
+    Let $a,b$ be non-zero integers and let $m = \lcm(a,b)$. Then,
+    \[ \ZZ m = \ZZ a \cap \ZZ b\]
+\end{theorem}
+\begin{corollary}
+    Let $a,b$ be integers. Then,
+    \[ ab = \lcm(a,b) \cdot \gcd(a,b)\]
+\end{corollary}
+
+\chapter{Cyclic Groups}
+\section{test}
