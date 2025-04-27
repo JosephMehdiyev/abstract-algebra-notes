@@ -171,4 +171,246 @@ Another useful subgroup is $\ZZ m = \ZZ a \cap \ZZ b \le \ZZ$. The variable $m$ 
 \end{corollary}
 
 \chapter{Cyclic Groups}
-\section{test}
+\section{Definition of Cyclic Groups}
+There are some special kind groups that can be constructed with only one element of the group. In other words,
+\begin{definition}
+    A group $G$ is called \alert{cyclic} if there is a element $a \in G$ such that
+    \[ G = \{ a^n \ | \ n \in \ZZ\}\]
+    We call this $a$ the $\alert{generator}$ of $G$. There can be multiple generators for the same cyclic group $G$. We write $\ab{a}$ to
+    notate this group of $a$.
+    $a^n$ may be distinct for all $n$ or loop through like a circle (that is where name comes from).
+\end{definition}
+\begin{example}
+    $\ZZ$ under addition is a cyclic group with generators $1$ and $-1$. In fact, if $a$ is a generator then also is $a\inv$.
+\end{example}
+\begin{example}
+    The set $\ZZ_n$ is a cyclic group. $\ab{1}$ and $\ab{n-1}$ are generators. In fact, for any $\gcd(x,n)= 1$, $\ab{x}$ is true.
+\end{example}
+\section{Elementary Properties of Cyclic Groups}
+\begin{theorem}
+    All cyclic groups are abelian.
+\end{theorem}
+\begin{proof}
+    This is direct consequence of definition of powers. For any element in a cyclig group $G$, we can write them as $a^s$ where $a$ is a
+    generator. Then,
+    \[ a^s \ast a^t = a^{s+t} = a^{t+s} = a^t \ast a^s\]
+\end{proof}
+Now we will study deeply about the properties of cyclic groups.
+\begin{theorem}
+    Let $\ab{a}$ be a cyclic group $G$. Then,the powers $a^i = a^j$ for $i \ge j$ iff  $n | i-j$
+\end{theorem}
+\begin{proof}
+    For $i=j$, this is clearly true. assume $i > j$. Then by division algorithm, we can write
+    \[ i-j = qn + r\]
+    Where $n = |a|$. Then, for $a \in G$ we have,
+    \[ a^{qn+r} = a^{qn} \ast a^r= (a^{n})^q \ast a^r = a^r\]
+    We know that $a^r = e$ iff $r = 0$, hence we are done. Converse is trivial
+\end{proof}
+Recall the definition of the order of the element in $G$. We have a neat relationship,
+\begin{corollary}
+    $\forall a \in G$, $|a| = |\ab{a}|$.
+
+    This actually directly comes from definitions.
+\end{corollary}
+Another trivial but useful corollary,
+\begin{corollary}
+    $a^k = e$ only and only if $n | k$.
+\end{corollary}
+\begin{proof}
+    Using Theorem 2.1.5, we know $a^k = a^0$ iff $n | k-0$. Hence we are done.
+\end{proof}
+
+\begin{theorem}
+    Let $|a| = n$ in a group (hence group is cyclic) and let $k$ be a positive integer. Then, $\ab{a^k}= \ab{a^{\gcd(n,k)}}$ and $|a^k| =
+    n/\gcd(n,k)$
+\end{theorem}
+\begin{proof}
+    For the first statement, let $d = \gcd(n,k)$. Then $k = dk'$. However,
+    \[ a^k = (a^d)^{k'} \in \ab{a^d} \Rightarrow \ab{a^k} \le \ab{a^d}\]
+    In other direction, we know that we can write $d= ns + kt$. Then,
+    \[ a^d = a^{ns + kt} = a^{ns}a^{kt} = a^{kt} = (a^k)^t \in \ab{a^k} \Rightarrow  \ab{a^d} \le \ab{a^k}\]
+    Hence $\ab{a^k} = \ab{a^d}$.
+
+    For second statement, we will use the fact that $(a^d)^{n/d} = e$ or $|a^d| = n/d$. Then using the first statement,
+    \[ |a^k| = |\ab{a^k}| = |\ab{a^{\gcd(n,k)}}|  = |a^{\gcd(n,k)}| = n / \gcd(n,k)\]
+\end{proof}
+\chapter{Permutations}
+\section{Definition of Permutations}
+\begin{definition*}
+    \alert{Permutations} are functions from the set to itself that are also bijective.
+\end{definition*}
+\alert{Permutation group} is set of composition of permutation functions.
+We use arrays to express the permutations. That is,
+\[ \alpha =
+    \begin{pmatrix}
+        1 & 2 & 3 & ... & n \\
+        \alpha(1) & \alpha(2) & \alpha(3) & ... & \alpha(n)
+    \end{pmatrix}
+\]
+\begin{example}
+    The permutations that shift everything to left by one can be written as
+    \[
+        \alpha =
+        \begin{pmatrix}
+            1 & 2& 3 & 4 \\
+            2 & 3 & 4 & 1
+        \end{pmatrix}
+    \]
+    That is, $\alpha(1) = 2, \alpha(2) = 3, \alpha(3) = 4, \alpha(4) = 1$.
+\end{example}
+Composition of permutations are also simple. If $\gamma$ and $\beta$ are permutations, then is also $\gamma \beta$ and $\beta \gamma$.Note
+that permutation groups are \alert{not necessarily abelian}.
+\begin{example}
+    Symmetric group $S_3$ is set of permutations of $\{ 1,2,3\}$ under composition. Then,
+    \[ e = \perm{1,2,3}
+        \qquad
+        \alpha = \perm{2,3,1}
+        \qquad
+        \beta = \perm{1,3,2}
+    \]
+    Other permutations are then
+    \[ \alpha ^2 = \perm{3,1,2}
+        \qquad
+        \alpha \beta = \perm{2,1,3},
+        \qquad
+        \alpha^2 \beta = \perm{3,2,1}
+    \]
+    Notice that there are two kinds of permutations: Rotation in cycle or Changing only between two elements (Transposition). The
+    permutation of first kind is usually notated as $\rho_i$ where $i$ is the number of elents you rotate to the left. Meanwhile, second
+    kind is notated as $\mu_i$ where $i$ is the stationary element.
+    Therefore,
+    \[ \rho_0 = \perm{1,2,3}, \rho_1 = \perm{2,3,1}, \rho_2 = \perm{3,1,2}\]
+    \[ \mu_1 = \perm{1,3,2}, \mu_2 = \perm{3,2,1}, \mu_3 = \perm{2,1,3}\]
+    Then we can show all permutations with combinations of $\mu_2$ and $\rho_1$
+\end{example}
+\section{Cycle Notation}
+Take $\rho_2$ in $S_2$. When we look at the elements, we see that
+\[ 1 \rightarrow 3 \rightarrow 2 \rightarrow 1\]
+Similarly for $\mu_1$, we can again see that
+\[ 1 \rightarrow 1; \quad 2 \rightarrow 3 \rightarrow 2\]
+The idea is very simple, we can show any permutations in combinations of these cycles. $\rho_2$ itself is a cycle and we can donate it as
+$(1,3,2)$. $\mu_1$ can be shown as $(1)(2,3)$.
+\begin{example}
+    In $S_7$, there is a permutation $(2,5,4,3)(1,6)(7)$. It is equivalent to
+    \[ \perm{6,5,2,3,4,1,7}\]
+    If there is an elementary cycle like $(7)$ here, we do not write it. Then our permutation is just $(2,5,4,3)(1,6)$.
+\end{example}
+We can multiply the permutations using this notation. (We read it from right to left).
+\begin{example}
+    \[ \rho_2 \mu_1 = (1,3,2)(2,3)\]
+    Notice that the cycles are not \alert{disjoint}.
+    This means that $2 \rightarrow 3 \rightarrow 2$. (we read it from right to left). Doing this for other elements, we see that
+    \[ \rho_2 \mu_1 = \perm{3,2,1} = \mu_2 = (1,3)\]
+\end{example}
+\begin{theorem}
+    Every permutation of a finite set can be written as multiplication of disjoint cycles.
+    \begin{proof}
+        We are permutating $A = \{ 1,2,3, \ldots, n \}$ with $\sigma$. Define \[ O_a = \{ y  = ga | g \in G \} \]
+        That is, this set (which is called \alert{Orbit}) is basically the set of elements \[a, \sigma(a), \sigma^2(a),
+            \ldots, \sigma^{n-1}
+        (a), \sigma^n (a) = a\]
+        This set is trivially finite since otherwise $A$ would not be finite. Then notice that if $O_i \cap O_j \neq \emptyset$, $O_i =
+        O_j$. Basically if there is an common elements residing in both orbits, then after permutating the element in each orbit for some
+        $m,n$ times, we will get the same element, hence the orbits are equal. The unique orbits are just our disjoint cycles!
+
+        We can also think orbits at everything that can be reached from x by an action of something in G.
+    \end{proof}
+\end{theorem}
+\begin{theorem}[Commutativity of Disjoint Cycles] Disjoint cycles are commutative.
+    \begin{proof}
+        Trivial, let $\alpha, \beta$ be disjoint cycles. Then $\forall a_i, b_i$ in these cycles respectively, we have
+        \[ \alpha(\beta(a_i)) = \alpha(a_i) = a_j\]
+        \[ \beta(\alpha(a_i))\ = \beta(a_j) = a_j\]
+        Simply, $\beta$ do not affect any $a_i$.
+    \end{proof}
+\end{theorem}
+
+\begin{definition}
+    We say that the permutation $\sigma$ has \alert{order of n} if $\sigma^n(a) = a$.
+\end{definition}
+\begin{theorem}[Order of a Permutation]
+    The order of disjoint cycles is equal to least commont multiple of length of cycles
+    \begin{proof}
+        For each disjoint cycle, we know that their order is their length (since they are just a cycle). If $a_1,a_2,\ldots,a_n$ are the
+        orders of each these disjoint cycles, it is trivial that $\lcm(a_1,\ldots,a_n)$ properly cycles through the each disjoint cycle.
+    \end{proof}
+\end{theorem}
+\section{2-cycles (Transpositions)}
+2-cycles are, as the name suggests, cycles with 2 elements. The examples are $(1,2); (5,9) (3,7)$ or whatever you think. They are called
+\alert{transpositions} since only two elements are moving while others are stationary. They are useful (we would not study them otherwise)
+\begin{theorem}[Permutations in transposition notation]
+    Any permutations can be written with transposition cycles
+    \begin{proof}
+        Every permutation can be written in multiplication of disjoint cycles. Let one disjoint cycle be $(a_1,\ldots,a_i)$. Then,
+        \[ (a_1, \ldots, a_i) = (a_1,a_i) \ldots (a_1,a_3)(a_1,a_2)\]
+        We can do this for other disjoint cycles, hence we are done.
+    \end{proof}
+\end{theorem}
+\section{Parity of a Permutation}
+The integers can be logically divided into two distinc pairs of odd and even integers. Notice that an operation on two odd integers give
+even integer, in parallel an operation on odd and an even integer gives an odd integer. Following this, we can similarly divide the
+permutations into \alert{odd and even} permutations.
+\begin{definition}{Parity of Permutations}
+    A permutation $\sigma$'s' parity is equal to the parity of the number of transposition compositions.
+\end{definition}
+With this definition, the function $\sgn$ that sends each permutation to its sign, that is,
+\[ S_n \to \{-1, 1\}\]
+is a homomorphism similar to parity of the integers.
+\begin{theorem}
+    The set of even permutations $A_n$ in $S_n$ is a subgroup of $S_n$. Moreover,
+    \[ |A_n| = \frac{n!}{2}\]
+    This is true because in a group, number of odd and even permutations are equal(except in trivial cases of course).
+\end{theorem}
+\chapter{Cosets}
+We already know $\ZZ$ is a group under addition. The set of even numbers under addition is also a subgroup of $\ZZ$. However, we cannot say
+the same thing for the odd integers. But, the odd integers are just one shift of the even integers! We basically call such sets that look
+like groups but not as \alert{cosets} of a group.
+\begin{definition}
+    Let $G$ be a group and $H$ be a group such that $H \le G$. Then, \alert{left cosets} are defined as,
+    \[ aH = \{ ah | h \in H\}\]
+    Similarly, right cosets are defined with the set Ha etc.
+    Number of Left cosets, \alert{index} of  a subgroup H in G is  are shown as $|G : H|$.
+\end{definition}
+To get the left cosets of a subgroup $H$, we just shift it witch each element $g \in G$.
+
+We have already seen the examples of cosets through the mathematics. The points in a unit circle. We can also see that all the left (or
+right) cosets circle through the entiretiy of the group $G$. More precisely, their union gives $G$.
+\begin{theorem}{Lagrange's Theorem}
+    If $G$ is a finite group and $H$ is a subgroup of $G$, Then $|H|$ divides $G$. In fact, number of left or right cosets are equal to the
+    number $|G| / |H|$. That is,
+    \[ |G: H| = \frac{|G|}{|H|}\]
+\end{theorem}
+\begin{corollary}
+    Groups of prime orders are cyclic
+    \begin{proof}
+        let $a$ be an element of the group. Then $|\ab{a}| \ | \ |G|$. But $|G|$ is prime, hence $|\ab{a}| = |G| \Rightarrow$ G is cyclic.
+    \end{proof}
+\end{corollary}
+\section{Orbits and Stabilizers}
+\begin{definition}{Stabilizer}
+    The stabilizer of an element $i$ in $G$ are set of elements in $G$ such that does not change $i$, that is it \alert{stabilizes it} as
+    name suggests. Basically the set of elemetns such that,
+    \[ \sigma(i) = i\]
+    We write this set as $\stab_G(i)$.
+\end{definition}
+\begin{definition}{Orbit}
+    We have already talked about this, we usually notate it as $O_{G,i}$ or $\orb_G(i)$.
+\end{definition}
+\begin{theorem}{Orbit-Stabilizer Theorem}
+    Let $G$ be a group in $S_n$. Then $\forall i \in G$,
+    \[ |G| = |\orb_G(i)| \cdot |\stab_G(i)|\]
+\end{theorem}
+\section{External Direct Products}
+This concept is similar to other direct products across the mathematics. For example, $\ZZ^2$ is set of 2-tuple integers $(a,b)$.
+Similarly, for all the groups,
+\begin{definition}{External Direct Products}
+    Let $\{ G_i\}$ be collection of groups. \alert{External Direct Products} of this collection written as
+    \[ G_1 \oplus G_2 \oplus
+    \ldots \oplus G_n = (g_1,g_2, \ldots, g_n) | G_i \in G_i\]
+\end{definition}
+\begin{example}
+    $\RR^2,\RR^3$ and other $\RR^n$ that we have studied in Linear Algebra, Calculus and Physics are examples.
+\end{example}
+The operations, our definitions of orbits, cycles etc are all component wise redefined.
+\section{Normal Subgroups}
+A normal Subgroup $H$ of a group $G$ is a normal subgroup if left and right cosets are equal

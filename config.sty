@@ -9,12 +9,14 @@
 \usepackage{mathtools}
 \usepackage[colorlinks=true, allcolors=blue]{hyperref}
 \usepackage{amsthm}
+\usepackage{xparse}
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage[lastexercise]{exercise}
 \usepackage{amssymb}
 \PassOptionsToPackage{svgnames,dvipsnames,table}{xcolor}
 \usepackage{xcolor}
+\usepackage{tikz-cd}
 \usepackage{hyperref}
 \usepackage{lastpage}
 \usepackage{lipsum}
@@ -160,6 +162,10 @@
 \declaretheorem[style=basehead,name=Question,numbered=no]{ques*}
 
 \DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\stab}{stab}
+\DeclareMathOperator{\orb}{orb}
+
 \providecommand{\half}{\frac{1}{2}}
 \providecommand{\inv}{^{-1}}
 \providecommand{\CC}{\mathbb C}
@@ -168,6 +174,22 @@
 \providecommand{\QQ}{\mathbb Q}
 \providecommand{\RR}{\mathbb R}
 \providecommand{\ZZ}{\mathbb Z}
-
+\newcommand{\ab}[1]{\langle{#1} \rangle}
 \newcommand{\vocab}[1]{\textbf{\color{blue}\sffamily #1}}
 \providecommand{\alert}{\vocab}
+
+\ExplSyntaxOn
+\NewDocumentCommand{\perm}{m}
+{
+    \begin{pmatrix}
+        \seq_clear:N \l_tmpa_seq
+        \int_step_inline:nn { \clist_count:n {#1} }
+        {
+            \seq_put_right:Nn \l_tmpa_seq {##1}
+        }
+        \seq_use:Nn \l_tmpa_seq { & }
+        \\
+        \clist_use:nn {#1} { & }
+    \end{pmatrix}
+}
+\ExplSyntaxOff
