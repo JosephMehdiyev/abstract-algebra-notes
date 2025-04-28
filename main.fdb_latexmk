@@ -1,5 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1745752661.0555 "main.tex" "main.pdf" "main" 1745752668.59929 0
+["pdflatex"] 1745767739.09823 "/home/bird/A/books/abstract_algebra/main.tex" "main.pdf" "main" 1745767749.0055 0
+  "/home/bird/A/books/abstract_algebra/main.tex" 1745057813.02921 362 c4cd5488438dde4a3a39a58a5a41ddd8 ""
   "/usr/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1742685315 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1742685315 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texmf-dist/fonts/tfm/jknappen/ec/tcsx1440.tfm" 1742685315 1536 d4501080e094848097ac9de5c88222ce ""
@@ -236,13 +237,13 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1742685315 42087 b0f9697c952c8f5a8eede4134282cb0d ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1744738396 5347145 bd349eadf798c3e3480f3776ab315ddf ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1744738143 2212501 0fbaee72e8061eeff0a3029cf4c1778f ""
-  "chapters/group.aux" 1745752668.28668 11747 ee4dd8915d1132e2b67a6af2966b4143 "pdflatex"
-  "chapters/group.tex" 1745752659.36638 21813 9bc28882cf86bd8bd65edc7bcaa65518 ""
+  "chapters/group.aux" 1745767748.64685 11747 ee4dd8915d1132e2b67a6af2966b4143 "pdflatex"
+  "chapters/group.tex" 1745767729.00131 21814 578fcef32e808c020cda91a88603b694 ""
   "config.sty" 1745746515.23359 6350 47b52f490df9cec673e67365c3569ebe ""
-  "main.aux" 1745752668.29068 7854 bc3a96f2e5b51500d89a47dd058c5736 "pdflatex"
-  "main.out" 1745752665.54159 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.aux" 1745767748.65085 7854 b3264e6732b45a3a78bc73050c86f11e "pdflatex"
+  "main.out" 1745767745.55977 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "main.tex" 1745057813.02921 362 c4cd5488438dde4a3a39a58a5a41ddd8 ""
-  "main.toc" 1745752668.30268 1467 aa7f1d630d1d2018310992fb4eb436cd "pdflatex"
+  "main.toc" 1745767748.66585 1467 aa7f1d630d1d2018310992fb4eb436cd "pdflatex"
   (generated)
   "chapters/group.aux"
   "main.aux"

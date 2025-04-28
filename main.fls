@@ -1,7 +1,7 @@
 PWD /home/bird/A/books/abstract_algebra
 INPUT /usr/share/texmf-dist/web2c/texmf.cnf
 INPUT /var/lib/texmf/web2c/pdftex/pdflatex.fmt
-INPUT main.tex
+INPUT /home/bird/A/books/abstract_algebra/main.tex
 OUTPUT main.log
 INPUT /usr/share/texmf-dist/tex/latex/koma-script/scrreprt.cls
 INPUT /usr/share/texmf-dist/tex/latex/koma-script/scrreprt.cls
